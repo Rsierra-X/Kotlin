@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:background="@drawable/back_init"
@@ -28,7 +29,17 @@
                     android:layout_margin="20dp"
                     android:id="@+id/button2" />
         </LinearLayout>
-
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:contentDescription="@string/actionButton"
+                android:layout_margin="16dp"
+                android:src="@android:drawable/ic_input_add"
+                app:backgroundTint="@color/white"
+                android:layout_gravity="end|bottom"
+                app:backgroundTintMode="add">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         <TextView
                 android:layout_width="match_parent"
