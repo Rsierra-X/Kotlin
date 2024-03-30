@@ -6,4 +6,6 @@
     <string name="user">Usuario</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="home">Inicio</string>
+    <string name="score">Puntajes</string>
 </resources>
