@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Week-2-pv</string>
+    <string name="app_name">week-2</string>
+    <string name="university">Universidad Galileo-2023</string>
+    <string name="galileoImage">GalileoLogo</string>
+    <string name="password">Contraseña</string>
+    <string name="user">Usuario</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="home">Inicio</string>
+    <string name="score">Puntajes</string>
+    <string name="actionButton">Action Button</string>
+    <string name="edit">Editar</string>
+    <string name="add">Agregar</string>
+    <string name="delete">Borrar</string>
+    <string name="gender">Sexo:</string>
+    <string name="Men">Masculino</string>
+    <string name="Female">Femenino</string>
 </resources>
