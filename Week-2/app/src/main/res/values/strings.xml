@@ -15,4 +15,14 @@
     <string name="gender">Sexo:</string>
     <string name="Men">Masculino</string>
     <string name="Female">Femenino</string>
+    <string name="choose_option">Escoja una opcion</string>
+    <string name="addition">Suma</string>
+    <string name="porcent">Promedio</string>
+    <string name="greater">Mayor</string>
+    <string name="meanor">Menor</string>
+    <string name="valor_1">Valor 1</string>
+    <string name="valor_3">valor 3</string>
+    <string name="valor_2">valor 3</string>
+    <string name="calcular">Calcular</string>
+    <string name="resultado">Resultado:</string>
 </resources>

@@ -33,7 +33,7 @@
                     android:id="@+id/optionSelect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Escoja una opcion"
+                    android:text="@string/choose_option"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="26sp"
@@ -44,7 +44,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.19" />
             <RadioGroup
-                    android:id="@+id/radioGroup1"
+                    android:id="@+id/radioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#024CAF50"
@@ -58,28 +58,28 @@
                         android:id="@+id/radioButton1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Suma"
+                        android:text="@string/addition"
                         android:textSize="24sp" />
 
                 <RadioButton
                         android:id="@+id/radioButton2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Promedio"
+                        android:text="@string/porcent"
                         android:textSize="24sp" />
 
                 <RadioButton
                         android:id="@+id/radioButton3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Mayor"
+                        android:text="@string/greater"
                         android:textSize="24sp" />
 
                 <RadioButton
                         android:id="@+id/radioButton4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Menor"
+                        android:text="@string/meanor"
                         android:textSize="24sp" />
             </RadioGroup>
 
@@ -89,29 +89,96 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="4" >
-            <TextView
+            <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gender"
-                    android:textSize="16sp" >
-            </TextView>
-            <RadioButton
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/valor_1"
+                        android:textSize="16sp" >
+                </TextView>
+                <EditText android:layout_width="350dp"
+                          android:layout_height="50dp"
+                          android:autofillHints=""
+                          android:inputType="number"
+                          android:id="@+id/val1"
+                          tools:ignore="LabelFor"
+                          style="@android:style/Widget.DeviceDefault.Light.AutoCompleteTextView">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Men">
-            </RadioButton>
-            <RadioButton
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/valor_2"
+                        android:id="@+id/val2"
+
+                        android:textSize="16sp" >
+                </TextView>
+                <EditText android:layout_width="350dp"
+                          android:layout_height="50dp"
+                          android:autofillHints=""
+                          android:inputType="number"
+                          tools:ignore="LabelFor">
+
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Female">
-            </RadioButton>
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/valor_3"
+                        android:id="@+id/val3"
+                        android:textSize="16sp" >
+                </TextView>
+                <EditText android:layout_width="350dp"
+                          android:layout_height="50dp"
+                          android:autofillHints=""
+                          android:inputType="number"
+                          tools:ignore="LabelFor">
+
+                </EditText>
+            </LinearLayout>
             <Button
-                    android:text="@string/delete"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:id="@+id/button3" />
+                    android:text="@string/calcular"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="1dp"
+                    android:id="@+id/button3"
+                    />
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:layout_height="0dp"
+                          android:layout_weight="1"
+                          android:gravity="center">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/resultado"
+                        android:textSize="16sp" >
+                </TextView>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/result"
+                        android:textSize="16sp" android:gravity="center">
+                </TextView>
+            </LinearLayout>
+
         </LinearLayout>
 
         <TextView
