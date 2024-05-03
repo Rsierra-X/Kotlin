@@ -1,5 +1,7 @@
 package org.example
 
+import java.util.*
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
@@ -66,7 +68,7 @@ fun String.palindrome(): Boolean {
 }
 
 fun convertirTemperatura(valor: Double, tipo: String) {
-    when (tipo.toUpperCase()) {
+    when (tipo.uppercase(Locale.getDefault())) {
         "C" -> {
             val celsius = (valor - 32) * 5 / 9
             println("$valor Fahrenheit es $celsius Celsius")
