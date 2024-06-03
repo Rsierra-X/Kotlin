@@ -5,15 +5,189 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/design_default_color_secondary"
+    tools:context=".views.MainActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="50dp"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vidas:"
+                android:layout_gravity="center"
+                android:textStyle="bold|italic"/>
+
+            <ImageView
+                android:id="@+id/heart_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/heart_icon" />
+            <ImageView
+                android:id="@+id/heart_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/heart_icon" />
+            <ImageView
+                android:id="@+id/heart_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/heart_icon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="7"
+            android:gravity="center"
+            android:layout_marginBottom="50dp"
+            tools:ignore="MissingConstraints">
+            <EditText
+                android:id="@+id/letter_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="text"/>
+            <EditText
+                android:id="@+id/letter_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="text" />
+            <EditText
+                android:id="@+id/letter_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="text"
+                />
+            <EditText
+                android:id="@+id/letter_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="text"
+                />
+            <EditText
+                android:id="@+id/letter_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="text"
+                />
+            <EditText
+                android:id="@+id/editTextText6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="text"
+                />
+            <EditText
+                android:id="@+id/letter_7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="text"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:visibility="visible"
+            android:id="@+id/stillPlaying"
+            android:layout_marginBottom="50dp"
+            tools:ignore="MissingConstraints">
+            <EditText
+                android:id="@+id/letter_found"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:maxLength="1"
+                android:ems="10"
+                android:inputType="text"/>
+            <Button
+                android:text="Buscar letra"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_margin="5dp"
+                android:id="@+id/button"
+                tools:ignore="NestedWeights"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:id="@+id/finish_game"
+            tools:ignore="MissingConstraints">
+            <TextView
+                android:id="@+id/action_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:ems="10"
+                android:layout_marginBottom="15dp"
+                android:text="Usted ha ganado"/>
+            <Button
+                android:text="Volver a jugar"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_margin="5dp"
+                android:id="@+id/button_reset"
+                tools:ignore="NestedWeights"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
