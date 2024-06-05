@@ -1,15 +1,17 @@
 package com.rsierra.project.view
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rsierra.project.R
 import com.rsierra.project.adapter.TaskAdapter
+import com.rsierra.project.createEditTaskDialog
 import com.rsierra.project.createTaskDialog
 import com.rsierra.project.database.entity.Task
 import com.rsierra.project.databinding.FragmentTodoListBinding
@@ -29,14 +31,24 @@ class TodoListFragment : Fragment(), TaskListListener {
         binding = FragmentTodoListBinding.inflate(inflater, container, false);
         viewModel = ViewModelProvider(this).get(TodoListViewModel::class.java)
         binding.rvTaskList.adapter = adapter
+        binding.rvTaskList.layoutManager = LinearLayoutManager(context)
+        viewModel.tasks.observe(viewLifecycleOwner) { newList ->
+            Log.d("TEST", "${newList.size}")
+            adapter.loadNewItems(newList)
+        }
+        viewModel.loadTaskList()
+
+
         binding.floatingActionButton.setOnClickListener {
             val newTask = Task(0,"","",0)
             context?.let { ctx ->
                 createTaskDialog(ctx,
                     newTask,
                     { newTask ->
-                        viewModel.createTask(newTask)
+                        viewModel.createTask(newTask,adapter)
                     },
+                    {},
+                    {},
                     {})
             }
         }
@@ -49,11 +61,25 @@ class TodoListFragment : Fragment(), TaskListListener {
         }
 
 
-        viewModel.loadTaskList()
+
         return binding.root
     }
 
     override fun onClick(task: Task) {
-        TODO("Not yet implemented")
+        context?.let { ctx ->
+            createTaskDialog(ctx,
+                task,
+                {},
+                {updatedTask ->
+                    createEditTaskDialog(ctx,
+                        updatedTask,
+                        { task ->
+                            viewModel.updateTask(task,adapter)
+                        })
+                    },
+                {deletedTask ->
+                    viewModel.deleteTask(deletedTask,adapter)},
+                {})
+        }
     }
 }

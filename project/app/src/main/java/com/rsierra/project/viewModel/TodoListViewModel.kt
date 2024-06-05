@@ -1,21 +1,24 @@
 package com.rsierra.project.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.rsierra.project.MyApplication
+import com.rsierra.project.adapter.TaskAdapter
 import com.rsierra.project.database.entity.Task
 import kotlinx.coroutines.launch
 
 class TodoListViewModel(val app: Application): AndroidViewModel(app) {
     private val _tasks: MutableLiveData<List<Task>> = MutableLiveData(emptyList())
     val tasks: LiveData<List<Task>> = _tasks
-    fun createTask(task: Task){
+    fun createTask(task: Task, adapter: TaskAdapter){
         viewModelScope.launch {
             (app as MyApplication).database.getTaskDao().insertTask(task)
         }
+        loadTaskList()
     }
 
     fun loadTaskList() {
@@ -25,17 +28,17 @@ class TodoListViewModel(val app: Application): AndroidViewModel(app) {
         }
     }
 
-    /*fun deleteMascota(mascota: Task, adapter: MascotaAdapter) {
-        adapter.deleteItem(mascota)
+    fun deleteTask(task: Task, adapter: TaskAdapter) {
+        adapter.deleteItem(task)
         viewModelScope.launch {
-            (app as MyApplication).database.getMascotaDao().deleteMascota(mascota)
+            (app as MyApplication).database.getTaskDao().deleteTask(task)
         }
     }
 
-    fun updateMascota(mascota: Mascota, adapter: MascotaAdapter) {
-        adapter.updateItem(mascota)
+    fun updateTask(task: Task, adapter: TaskAdapter) {
+        adapter.updateItem(task)
         viewModelScope.launch {
-            (app as MyApplication).database.getMascotaDao().updateMascota(mascota)
+            (app as MyApplication).database.getTaskDao().updateTask(task)
         }
-    }*/
+    }
 }
