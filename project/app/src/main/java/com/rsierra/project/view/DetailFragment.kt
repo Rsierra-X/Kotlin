@@ -29,6 +29,7 @@ class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private lateinit var statusView: View
 
+    private lateinit var taskSelected: Task
     private lateinit var viewModel: DetailViewModel
 
 
@@ -56,10 +57,15 @@ class DetailFragment : Fragment() {
                 taskDescription.text = it.description
                 val colorDrawable = getPriorityColor(requireContext(), it.priority)
                 statusView.background = colorDrawable
+                taskSelected = it
             }
         })
 
-        closeTaskButton.setOnClickListener {
+        binding.fabBack.setOnClickListener {
+            findNavController().navigate(R.id.action_detailFragment_to_todoListFragment)
+        }
+        binding.closeTaskButton.setOnClickListener {
+            viewModel.deleteTask(taskSelected)
             findNavController().navigate(R.id.action_detailFragment_to_todoListFragment)
         }
         return binding.root
