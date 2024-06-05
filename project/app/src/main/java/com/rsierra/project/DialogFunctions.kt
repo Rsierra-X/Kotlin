@@ -35,23 +35,35 @@ fun createEditTaskDialog(context: Context, task: Task,
     }
     dialog.show()
 }
-fun createTaskDialog(context: Context, task: Task,
-                     create: (Task) -> Unit,
-                     update: (Task) -> Unit,
-                     delete: (Task) -> Unit,
-                     detail: (Task) -> Unit) {
+fun createTaskDialog(
+    permissions: Array<Boolean>, context: Context, task: Task,
+    create: (Task) -> Unit,
+    update: (Task) -> Unit,
+    delete: (Task) -> Unit,
+    detail: (Task) -> Unit) {
     val dialogBinding = EditDialogLayoutBinding.inflate(LayoutInflater.from(context))
     val dialog = AlertDialog.Builder(context)
-    if (task.id != 0) {
-        dialog.setPositiveButton("EDITAR ") { d, _ ->
 
-            update(task)
+    if (task.id != 0) {
+        if (permissions[0]){
+            dialog.setPositiveButton("EDITAR ") { d, _ ->
+                update(task)
+            }
         }
-        dialog.setNegativeButton("COMPLETADA ") { d, _ ->
-            delete(task)
+        if (permissions[1]){
+            dialog.setNegativeButton("COMPLETADA ") { d, _ ->
+                delete(task)
+            }
         }
-        dialog.setNeutralButton("Detalle") { d, _ ->
-            detail(task)
+        if (permissions[2]){
+            dialog.setNeutralButton("Detalle") { d, _ ->
+                detail(task)
+            }
+        }
+        if (!permissions[0] && !permissions[1] && !permissions[2]){
+            dialog.setNeutralButton("CANCELAR") { d, _ ->
+                d.dismiss()
+            }
         }
     } else {
         dialog.setTitle("Crear task")

@@ -19,6 +19,7 @@ import com.rsierra.project.database.entity.Task
 import com.rsierra.project.databinding.FragmentDetailBinding
 import com.rsierra.project.databinding.FragmentTodoListBinding
 import com.rsierra.project.viewModel.DetailViewModel
+import com.rsierra.project.viewModel.SettingViewModel
 
 class DetailFragment : Fragment() {
 
@@ -31,7 +32,7 @@ class DetailFragment : Fragment() {
 
     private lateinit var taskSelected: Task
     private lateinit var viewModel: DetailViewModel
-
+    private val settingViewModel: SettingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +51,10 @@ class DetailFragment : Fragment() {
         taskId?.let { id ->
             viewModel.getTaskById(id)
         }
+
+        settingViewModel.canCompleteTask.observe(viewLifecycleOwner, Observer { canComplete ->
+            binding.closeTaskButton.isEnabled = canComplete
+        })
 
         viewModel.task.observe(viewLifecycleOwner, Observer { task ->
             task?.let {
