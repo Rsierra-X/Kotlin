@@ -19,7 +19,7 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/circle_status"
+            android:background="@drawable/circle_status_red"
         />
 
         <TextView
