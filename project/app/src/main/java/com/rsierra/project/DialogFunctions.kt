@@ -88,11 +88,3 @@ fun getPriorityPosition(selectedRadioButton: EditDialogLayoutBinding): Int {
     return priorityPosition;
 }
 
-fun getPriorityId(priorityId: Int): String {
-    return when (priorityId) {
-        0 -> ""
-        1 -> ""
-        else -> ""
-    }
-
-}

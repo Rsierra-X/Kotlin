@@ -79,7 +79,11 @@ class TodoListFragment : Fragment(), TaskListListener {
                     },
                 {deletedTask ->
                     viewModel.deleteTask(deletedTask,adapter)},
-                {})
+                {
+                    val bundle = Bundle()
+                    bundle.putInt("task_id", task.id)
+                    findNavController().navigate(R.id.action_todoListFragment_to_detailFragment,bundle)
+                })
         }
     }
 }
