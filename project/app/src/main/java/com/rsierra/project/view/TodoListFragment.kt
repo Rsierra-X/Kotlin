@@ -6,27 +6,44 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.rsierra.project.R
+import com.rsierra.project.createTaskDialog
+import com.rsierra.project.database.entity.Task
+import com.rsierra.project.databinding.FragmentTodoListBinding
 import com.rsierra.project.viewModel.TodoListViewModel
 
 class TodoListFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = TodoListFragment()
-    }
+    private lateinit var binding: FragmentTodoListBinding
 
     private val viewModel: TodoListViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_todo_list, container, false)
+        binding = FragmentTodoListBinding.inflate(inflater, container, false);
+        binding.floatingActionButton.setOnClickListener {
+            val newTask = Task(0,"","",0)
+            context?.let { ctx ->
+                createTaskDialog(ctx,
+                    newTask,
+                    { newTask ->
+                        viewModel.createTask(newTask)
+                    },
+                    {})
+            }
+        }
+        binding.fabInfo.setOnClickListener {
+            findNavController().navigate(R.id.action_todoListFragment_to_aboutPageFragment)
+        }
+
+        binding.fabSettings.setOnClickListener {
+            findNavController().navigate(R.id.action_todoListFragment_to_settingFragment)
+        }
+        return binding.root
     }
 }

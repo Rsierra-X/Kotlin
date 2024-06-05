@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/todoListFragment">
 
+    <fragment
+        android:id="@+id/todoListFragment"
+        android:name="com.rsierra.project.view.TodoListFragment"
+        android:label="fragment_todo_list"
+        tools:layout="@layout/fragment_todo_list" >
+        <action
+            android:id="@+id/action_todoListFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_todoListFragment_to_aboutPageFragment"
+            app:destination="@id/aboutPageFragment" />
+        <action
+            android:id="@+id/action_todoListFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.rsierra.project.view.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_todoListFragment"
+            app:destination="@id/todoListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutPageFragment"
+        android:name="com.rsierra.project.view.AboutPageFragment"
+        android:label="fragment_about_page"
+        tools:layout="@layout/fragment_about_page" >
+        <action
+            android:id="@+id/action_aboutPageFragment_to_todoListFragment"
+            app:destination="@id/todoListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.rsierra.project.view.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_todoListFragment"
+            app:destination="@id/todoListFragment" />
+    </fragment>
 </navigation>
