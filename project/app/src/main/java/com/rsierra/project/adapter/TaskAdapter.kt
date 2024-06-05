@@ -52,7 +52,6 @@ class TaskAdapter(val list: ArrayList<Task>, val taskListener: TaskListListener)
     }
 
     private fun getPriorityColor(context: Context, priority: Int): Drawable? {
-        Log.d("myTag", priority.toString());
         return when (priority) {
             1 -> ContextCompat.getDrawable(context, R.drawable.circle_status_green)
             2 -> ContextCompat.getDrawable(context, R.drawable.circle_status_yellow)

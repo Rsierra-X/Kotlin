@@ -13,9 +13,10 @@ fun createEditTaskDialog(context: Context, task: Task,
                          update: (Task) -> Unit) {
     val dialogBinding = EditDialogLayoutBinding.inflate(LayoutInflater.from(context))
     val dialog = AlertDialog.Builder(context)
+    val radioButtonIds = arrayOf(dialogBinding.radioHigh.id, dialogBinding.radioMedium.id, dialogBinding.radioLow.id)
     dialogBinding.title.setText(task.title)
     dialogBinding.description.setText(task.description)
-    dialogBinding.radioGroupPriority.check(task.priority)
+    dialogBinding.radioGroupPriority.check(radioButtonIds[task.priority])
     dialog.setTitle("Modificar task")
     dialog.setView(dialogBinding.root)
     dialog.setPositiveButton("EDITAR ") { d, _ ->
@@ -25,6 +26,8 @@ fun createEditTaskDialog(context: Context, task: Task,
             description = dialogBinding.description.text.toString(),
             priority = getPriorityPosition(dialogBinding)
         )
+        Log.d("myTag", updatedTask.toString());
+
         update(updatedTask)
     }
     dialog.setNeutralButton("CANCELAR") { d, _ ->
@@ -83,4 +86,13 @@ fun getPriorityPosition(selectedRadioButton: EditDialogLayoutBinding): Int {
     }
 
     return priorityPosition;
+}
+
+fun getPriorityId(priorityId: Int): String {
+    return when (priorityId) {
+        0 -> ""
+        1 -> ""
+        else -> ""
+    }
+
 }
